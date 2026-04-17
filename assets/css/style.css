@@ -1,0 +1,61 @@
+/* Reset básico */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* CABECERA */
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* CONTENIDO */
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+/* INTRO */
+.intro {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* BUSCADOR */
+.busqueda {
+    margin-bottom: 20px;
+}
+
+.busqueda input {
+    padding: 8px;
+    width: 200px;
+}
+
+.busqueda select {
+    padding: 8px;
+}
+
+/* RESULTADOS */
+.resultados {
+    border: 1px solid #ccc;
+    min-height: 100px;
+    padding: 10px;
+}
