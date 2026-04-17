@@ -1,61 +1,117 @@
-/* Reset básico */
-body {
+
+/* ===============================
+        RESETEO DE ESTILO
+=============================== */
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+*{
+    padding: 0;
     margin: 0;
-    font-family: Arial, sans-serif;
+    box-sizing: border-box;
 }
-
-/* CABECERA */
-header {
-    background-color: #2c3e50;
-    color: white;
-    padding: 10px;
-    text-align: center;
-}
-
-nav {
-    margin-top: 10px;
-}
-
-nav a {
-    color: white;
-    margin: 0 10px;
+a {
     text-decoration: none;
+    color: var(--color-titulos);
+}
+h2 {
+    margin-bottom: 10px;
+    font-size: 2rem;
+    text-align: center;
+    font-family: "Marcellus&display", cursive;
+    color: var(--color-titulos)
+}
+body{
+    background-color: var(--color--claro);
 }
 
-nav a:hover {
-    text-decoration: underline;
+/* ===============================
+       VARIABLES COLORES
+=============================== */
+:root{
+    --color-primario: #252b1f;
+    --color-secundario: #5e634d;
+    --color-terciario: #30332d;
+    --color-titulos: #d8c40d;
+    --color-oscuro: #291d15;
+    --color--claro: #787854;
+    --color-blanco: #ffffff;
+    --color-negro: #000000;
 }
 
-/* CONTENIDO */
-main {
-    padding: 20px;
+
+/* =========================
+         CABECERA
+========================= */
+.cabecera {
+    width: 100%;
+}
+
+/* ZONA IMAGEN + TITULO */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 35vh;
+    max-height: 320px;
+    min-height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
-/* INTRO */
-.intro {
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin-bottom: 20px;
+.img_cabecera {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
 }
 
-/* BUSCADOR */
-.busqueda {
-    margin-bottom: 20px;
+/* H1 encima de la imagen */
+.titulo_cabecera {
+    position: relative;
+    z-index: 2;
+    color: var(--color-titulos);
+    font-size: 4.5rem;
+    font-weight: bold;
 }
 
-.busqueda input {
-    padding: 8px;
-    width: 200px;
+/* NAV debajo (flujo normal) */
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    background-color: var(--color-primario);
 }
 
-.busqueda select {
-    padding: 8px;
+ul.menu {
+    list-style: none;
+    display: flex;
+    gap: 10rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-/* RESULTADOS */
-.resultados {
-    border: 1px solid #ccc;
-    min-height: 100px;
-    padding: 10px;
+/*
+        RESPONSIVE
+----------------------- */
+@media (max-width: 768px) {
+    .cabecera {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    ul.menu {
+        flex-direction: row;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .menu__option a {
+        display: block;
+    }
 }
