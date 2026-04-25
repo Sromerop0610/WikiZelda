@@ -26,23 +26,28 @@
             </nav>
 
         </header>
-        <main>
+        <main class="contenido">
             <section class="bienvenida">
                 <h2>¡Bienvenido a WikiZelda!</h2>
-                <p>La enciclopedia definitiva sobre el universo de Zelda. Aquí encontrarás toda la información sobre juegos, personajes, historia y mucho más.</p>
+                <p class="texto_bienvenida">La enciclopedia definitiva sobre el universo de Zelda. Aquí encontrarás toda la información sobre juegos, personajes, historia y mucho más.</p>
             </section>
             <section class="busqueda">
-                <input type="text" placeholder="Buscar...">
+                <div class="busqueda_contenedor">
+                    <input type="text" placeholder="Buscar...">
 
-                <select>
-                    <option value="">Filtros</option>
-                    <option value="personajes">Personajes</option>
-                    <option value="juegos">Juegos</option>
-                    <option value="lugares">Lugares</option>
-                </select>
+                    <select>
+                        <option value="">Filtros</option>
+                        <option value="personajes">Personajes</option>
+                        <option value="juegos">Juegos</option>
+                        <option value="lugares">Lugares</option>
+                    </select>
+                </div>
             </section>
+
             <section class="resultados">
-                <!-- Aquí aparecerían los resultados -->
+                <div class="grid_resultados">
+                    <!-- Aquí aparecerían los resultados -->
+                </div>
             </section>
         </main>
         <footer>
