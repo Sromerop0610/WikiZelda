@@ -21,27 +21,25 @@ async function fetchZelda(tipo, busqueda) {
         const data = await response.json();
 
         console.log("DATOS API:", data);
+
         return data.data;
 
     } catch (error) {
         console.error("Error:", error);
+        throw error;
     }
 }
-
-fetchZelda("characters", "an");
-
 
 // ==========================
 // ELEMENTOS DOM
 // ==========================
 const input = document.getElementById("inputBusqueda");
 const filtro = document.getElementById("filtroBusqueda");
-
-// ==========================
-// VOLCADO EN HTML
-// ==========================
 const contenedor = document.getElementById("contenedorResultados");
 
+// ==========================
+// PINTAR RESULTADOS
+// ==========================
 function pintarResultados(datos, tipo) {
 
     contenedor.innerHTML = "";
@@ -58,15 +56,55 @@ function pintarResultados(datos, tipo) {
 
         tarjeta.innerHTML = `
             <h3>${item.name}</h3>
-            <p>${item.description || "Sin descripción"}</p>
+            <p>${item.description?.slice(0, 120) || "Sin descripción"}...</p>
             <p><strong>Tipo:</strong> ${tipo === "characters" ? "Personaje" : "Monstruo"}</p>
         `;
 
         contenedor.appendChild(tarjeta);
     });
 }
+
 // ==========================
-// EVENTO DE BÚSQUEDA
+// CACHÉ
+// ==========================
+function obtenerCache(tipo, busqueda) {
+    const clave = `${tipo}_${busqueda}`;
+    const datos = localStorage.getItem(clave);
+    return datos ? JSON.parse(datos) : null;
+}
+
+function guardarCache(tipo, busqueda, datos) {
+    const clave = `${tipo}_${busqueda}`;
+    localStorage.setItem(clave, JSON.stringify(datos));
+}
+
+// ==========================
+// FUNCIÓN PRINCIPAL DE BÚSQUEDA
+// ==========================
+async function buscar(texto, tipo) {
+
+    const cache = obtenerCache(tipo, texto);
+
+    if (cache) {
+        console.log("Usando caché");
+        pintarResultados(cache, tipo);
+        return;
+    }
+
+    try {
+        const resultados = await fetchZelda(tipo, texto);
+
+        guardarCache(tipo, texto, resultados);
+
+        pintarResultados(resultados, tipo);
+
+    } catch (error) {
+        contenedor.innerHTML = "<p>Error al cargar datos</p>";
+    }
+}
+
+// ==========================
+// EVENTO INPUT (DEBOUNCE)
 // ==========================
 input.addEventListener("input", () => {
 
@@ -75,16 +113,27 @@ input.addEventListener("input", () => {
 
     clearTimeout(timeout);
 
-    timeout = setTimeout(async () => {
+    timeout = setTimeout(() => {
 
         if (texto.length === 0) {
             contenedor.innerHTML = "";
             return;
         }
 
-        const resultados = await fetchZelda(tipo, texto);
-
-        pintarResultados(resultados, tipo);
+        buscar(texto, tipo);
 
     }, 500);
+});
+
+// ==========================
+// EVENTO CAMBIO DE FILTRO
+// ==========================
+filtro.addEventListener("change", () => {
+
+    const texto = input.value.trim();
+    const tipo = filtro.value;
+
+    if (texto.length === 0) return;
+
+    buscar(texto, tipo);
 });

@@ -179,6 +179,13 @@ ul.menu {
     cursor: pointer;
 }
 
+.estado {
+    text-align: center;
+    margin: 1rem 0;
+    color: white;
+    font-weight: bold;
+}
+
 /* =========================
         RESULTADOS
 ========================= */
