@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favoritos | WikiZelda</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/script.js" defer></script>
+</head>
+
+<body>
+
+<header class="cabecera">
+    <div class="hero">
+        <img class="img_cabecera" src="assets/images/cabecera.jpg" alt="cabecera">
+        <h1 class="titulo_cabecera">WikiZelda</h1>
+    </div>
+    <nav>
+        <ul class="menu">
+            <li class="opcion_menu"><a href="index.html">Inicio</a></li>
+            <li class="opcion_menu"><a href="favoritos.html">Favoritos</a></li>
+            <li class="opcion_menu"><a href="catalogo.html">Catálogo</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="contenido">
+    <section class="titulo_favoritos">
+        <h2>Tus favoritos</h2>
+        <p class="texto_favoritos">
+            Aquí tienes las entradas que has guardado.
+        </p>
+    </section>
+
+    <section class="favoritos">
+        <div class="grid_resultados" id="contenedorFavoritos">
+            <!-- JS pintará aquí las tarjetas -->
+        </div>
+
+        <p id="mensajeVacio" class="mensaje_vacio">
+            No tienes favoritos todavía.
+        </p>
+    </section>
+
+</main>
+
+</body>
+</html>

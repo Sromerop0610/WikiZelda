@@ -302,3 +302,30 @@ ul.menu {
 .btn_favorito:hover {
     opacity: 0.8;
 }
+
+/* =========================
+       FAVORITOS
+========================= */
+.titulo_favoritos {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.texto_favoritos {
+    color: var(--color-blanco);
+    font-size: 1.1rem;
+}
+
+/* CONTENEDOR */
+.favoritos {
+    margin-top: 1rem;
+}
+
+/* MENSAJE VACÍO */
+.mensaje_vacio {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--color-blanco);
+    font-style: italic;
+    display: none; /* JS lo mostrará si no hay favoritos */
+}
