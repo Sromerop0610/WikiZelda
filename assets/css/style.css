@@ -193,7 +193,7 @@ ul.menu {
     gap: 1.5rem;
 }
 
-/* Tarjetas de resultados (para cuando uses JS) */
+/* Para cuando ponga el js*/
 .tarjeta {
     background-color: var(--color-terciario);
     padding: 1rem;
@@ -214,4 +214,91 @@ ul.menu {
 .tarjeta p {
     font-size: 0.95rem;
     line-height: 1.4;
+}
+
+/* =========================
+       DETALLE GENERAL
+========================= */
+.detalle_contenido {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* VOLVER */
+.boton_volver {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--color-titulos);
+    font-weight: bold;
+}
+
+/* =========================
+       TARJETA
+========================= */
+.detalle_card {
+    background-color: var(--color-terciario);
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+/* INFO */
+.detalle_info {
+    color: var(--color-blanco);
+}
+
+.detalle_info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* CATEGORÍA */
+.categoria {
+    color: var(--color-titulos);
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* DESCRIPCIÓN */
+.descripcion {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* EXTRA INFO */
+.detalle_extra {
+    margin-bottom: 1.5rem;
+    background-color: var(--color-secundario);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.detalle_extra p {
+    margin-bottom: 0.5rem;
+}
+
+/* LISTA APARICIONES */
+.lista_apariciones {
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+}
+
+.lista_apariciones li {
+    font-size: 0.9rem;
+    word-break: break-all;
+}
+
+/* BOTÓN */
+.btn_favorito {
+    background-color: var(--color-titulos);
+    color: var(--color-negro);
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn_favorito:hover {
+    opacity: 0.8;
 }

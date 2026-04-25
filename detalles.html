@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle | WikiZelda</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/detalle.js" defer></script>
+</head>
+
+<body>
+
+<header class="cabecera">
+    <div class="hero">
+        <img class="img_cabecera" src="assets/images/cabecera.jpg" alt="cabecera">
+        <h1 class="titulo_cabecera">WikiZelda</h1>
+    </div>
+    <nav>
+        <ul class="menu">
+            <li class="opcion_menu"><a href="index.html">Inicio</a></li>
+            <li class="opcion_menu"><a href="favoritos.html">Favoritos</a></li>
+            <li class="opcion_menu"><a href="catalogo.html">Catálogo</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="detalle_contenido">
+    <a href="index.html" class="boton_volver">← Volver</a>
+
+    <section class="detalle_card">
+        <div class="detalle_info">
+            <h2 id="nombre">Nombre</h2>
+            <p class="categoria" id="categoria">Categoría</p>
+            <p class="descripcion" id="descripcion">
+                Descripción...
+            </p>
+            <div class="detalle_extra" id="extra">
+                <!-- JS meterá aquí:
+                    - gender (solo personajes)
+                    - race (solo personajes)
+                    - appearances (ambos)
+                -->
+            </div>
+            <button class="btn_favorito" id="btnFavorito">
+                Añadir a favoritos
+            </button>
+        </div>
+    </section>
+
+</main>
+
+</body>
+</html>
