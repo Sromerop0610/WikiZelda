@@ -1,5 +1,5 @@
 let timeout;
-
+const estado = document.getElementById("estado");
 // ==========================
 // CONFIGURACIÓN API
 // ==========================
@@ -83,10 +83,14 @@ function guardarCache(tipo, busqueda, datos) {
 // ==========================
 async function buscar(texto, tipo) {
 
+    estado.textContent = "Cargando...";
+    contenedor.innerHTML = "";
+
     const cache = obtenerCache(tipo, texto);
 
     if (cache) {
         console.log("Usando caché");
+        estado.textContent = "";
         pintarResultados(cache, tipo);
         return;
     }
@@ -96,10 +100,16 @@ async function buscar(texto, tipo) {
 
         guardarCache(tipo, texto, resultados);
 
+        if (!resultados || resultados.length === 0) {
+            estado.textContent = "No hay resultados";
+            return;
+        }
+
+        estado.textContent = "";
         pintarResultados(resultados, tipo);
 
     } catch (error) {
-        contenedor.innerHTML = "<p>Error al cargar datos</p>";
+        estado.textContent = "Error al conectar con la API";
     }
 }
 
