@@ -38,6 +38,34 @@ const input = document.getElementById("inputBusqueda");
 const filtro = document.getElementById("filtroBusqueda");
 
 // ==========================
+// VOLCADO EN HTML
+// ==========================
+const contenedor = document.getElementById("contenedorResultados");
+
+function pintarResultados(datos, tipo) {
+
+    contenedor.innerHTML = "";
+
+    if (!datos || datos.length === 0) {
+        contenedor.innerHTML = "<p>No hay resultados</p>";
+        return;
+    }
+
+    datos.forEach(item => {
+
+        const tarjeta = document.createElement("div");
+        tarjeta.classList.add("tarjeta");
+
+        tarjeta.innerHTML = `
+            <h3>${item.name}</h3>
+            <p>${item.description || "Sin descripción"}</p>
+            <p><strong>Tipo:</strong> ${tipo === "characters" ? "Personaje" : "Monstruo"}</p>
+        `;
+
+        contenedor.appendChild(tarjeta);
+    });
+}
+// ==========================
 // EVENTO DE BÚSQUEDA
 // ==========================
 input.addEventListener("input", () => {
@@ -45,17 +73,18 @@ input.addEventListener("input", () => {
     const texto = input.value.trim();
     const tipo = filtro.value;
 
-    // limpiar temporizador anterior
     clearTimeout(timeout);
 
-    // esperar antes de ejecutar
     timeout = setTimeout(async () => {
 
-        if (texto.length === 0) return;
+        if (texto.length === 0) {
+            contenedor.innerHTML = "";
+            return;
+        }
 
         const resultados = await fetchZelda(tipo, texto);
 
-        console.log("RESULTADOS:", resultados);
+        pintarResultados(resultados, tipo);
 
-    }, 500); // 500ms (medio segundo)
+    }, 500);
 });
