@@ -27,3 +27,25 @@ async function fetchZelda(tipo, busqueda) {
 }
 
 fetchZelda("characters", "an");
+
+
+// ==========================
+// ELEMENTOS DOM
+// ==========================
+const input = document.getElementById("inputBusqueda");
+const filtro = document.getElementById("filtroBusqueda");
+
+// ==========================
+// EVENTO DE BÚSQUEDA
+// ==========================
+input.addEventListener("input", async () => {
+
+    const texto = input.value.trim();
+    const tipo = filtro.value;
+
+    if (texto.length === 0) return;
+
+    const resultados = await fetchZelda(tipo, texto);
+
+    console.log("RESULTADOS:", resultados);
+});
