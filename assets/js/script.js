@@ -1,3 +1,5 @@
+let timeout;
+
 // ==========================
 // CONFIGURACIÓN API
 // ==========================
@@ -38,14 +40,22 @@ const filtro = document.getElementById("filtroBusqueda");
 // ==========================
 // EVENTO DE BÚSQUEDA
 // ==========================
-input.addEventListener("input", async () => {
+input.addEventListener("input", () => {
 
     const texto = input.value.trim();
     const tipo = filtro.value;
 
-    if (texto.length === 0) return;
+    // limpiar temporizador anterior
+    clearTimeout(timeout);
 
-    const resultados = await fetchZelda(tipo, texto);
+    // esperar antes de ejecutar
+    timeout = setTimeout(async () => {
 
-    console.log("RESULTADOS:", resultados);
+        if (texto.length === 0) return;
+
+        const resultados = await fetchZelda(tipo, texto);
+
+        console.log("RESULTADOS:", resultados);
+
+    }, 500); // 500ms (medio segundo)
 });
