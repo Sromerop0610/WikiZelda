@@ -245,7 +245,7 @@ async function cargarDetalle() {
     if (btnFav) {
         btnFav.textContent = existe ? "💖 Quitar de favoritos" : "⭐ Añadir a favoritos";
 
-        btnFav.addEventListener("click", () => {
+        btnFav.onclick = () => {
 
             let favs = getFavoritos();
             const index = favs.findIndex(f => f.id === item.id);
@@ -264,7 +264,7 @@ async function cargarDetalle() {
 
             guardarFavoritos(favs);
             cargarDetalle();
-        });
+        };
     }
 }
 
