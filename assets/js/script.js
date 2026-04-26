@@ -71,6 +71,8 @@ function guardarCache(tipo, busqueda, datos) {
 // ==========================
 function pintarResultados(datos, tipo) {
 
+    if (!contenedor) return;
+
     contenedor.innerHTML = "";
 
     if (!datos || datos.length === 0) {
@@ -105,7 +107,6 @@ function pintarResultados(datos, tipo) {
             e.stopPropagation();
 
             let favs = getFavoritos();
-
             const index = favs.findIndex(f => f.id === item.id);
 
             if (index !== -1) {
@@ -115,13 +116,13 @@ function pintarResultados(datos, tipo) {
                     id: item.id,
                     name: item.name,
                     tipo: tipo,
-                    description: item.description
+                    description: item.description,
+                    fecha: Date.now()
                 });
             }
 
             guardarFavoritos(favs);
-
-            pintarResultados(datos, tipo); // refresca UI
+            pintarResultados(datos, tipo);
         });
 
         contenedor.appendChild(card);
@@ -237,17 +238,16 @@ async function cargarDetalle() {
         ${item.appearances ? `<p>Apariciones: ${item.appearances.length}</p>` : ""}
     `;
 
-    // BOTÓN FAVORITO DETALLE
+    // BOTÓN FAVORITO
     const favs = getFavoritos();
     const existe = favs.some(f => f.id === item.id);
 
     if (btnFav) {
         btnFav.textContent = existe ? "💖 Quitar de favoritos" : "⭐ Añadir a favoritos";
 
-        btnFav.addEventListener("click", () => {
+        btnFav.onclick = () => {
 
             let favs = getFavoritos();
-
             const index = favs.findIndex(f => f.id === item.id);
 
             if (index !== -1) {
@@ -257,14 +257,14 @@ async function cargarDetalle() {
                     id: item.id,
                     name: item.name,
                     tipo,
-                    description: item.description
+                    description: item.description,
+                    fecha: Date.now()
                 });
             }
 
             guardarFavoritos(favs);
-
-            cargarDetalle(); // refresca botón
-        });
+            cargarDetalle();
+        };
     }
 }
 
@@ -272,6 +272,7 @@ async function cargarDetalle() {
 // ==========================
 // FAVORITOS PAGE
 // ==========================
+const ordenSelect = document.getElementById("ordenFavoritos");
 const contFav = document.getElementById("contenedorFavoritos");
 const mensajeVacio = document.getElementById("mensajeVacio");
 
@@ -279,7 +280,7 @@ function pintarFavoritos() {
 
     if (!contFav) return;
 
-    const favs = getFavoritos();
+    let favs = getFavoritos();
 
     contFav.innerHTML = "";
 
@@ -290,6 +291,30 @@ function pintarFavoritos() {
 
     mensajeVacio.style.display = "none";
 
+    // ==========================
+    // ORDENACIÓN
+    // ==========================
+    const orden = ordenSelect ? ordenSelect.value : "az";
+
+    if (orden === "az") {
+        favs.sort((a, b) => a.name.localeCompare(b.name));
+    }
+
+    if (orden === "za") {
+        favs.sort((a, b) => b.name.localeCompare(a.name));
+    }
+
+    if (orden === "reciente") {
+        favs.sort((a, b) => b.fecha - a.fecha);
+    }
+
+    if (orden === "antiguo") {
+        favs.sort((a, b) => a.fecha - b.fecha);
+    }
+
+    // ==========================
+    // PINTAR
+    // ==========================
     favs.forEach(item => {
 
         const card = document.createElement("div");
@@ -323,7 +348,7 @@ function pintarFavoritos() {
 
 
 // ==========================
-// INIT DETALLE / FAVORITOS
+// INIT GENERAL
 // ==========================
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -335,4 +360,7 @@ document.addEventListener("DOMContentLoaded", () => {
         pintarFavoritos();
     }
 
+    if (ordenSelect) {
+        ordenSelect.addEventListener("change", pintarFavoritos);
+    }
 });

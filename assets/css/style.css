@@ -206,21 +206,25 @@ ul.menu {
     padding: 1rem;
     border-radius: 12px;
     color: var(--color-blanco);
-    transition: transform 0.2s ease;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(216, 196, 13, 0.15);
 }
 
 .tarjeta:hover {
-    transform: scale(1.03);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
 }
 
 .tarjeta h3 {
     color: var(--color-titulos);
     margin-bottom: 0.5rem;
+    font-size: 1.1rem;
 }
 
 .tarjeta p {
+    margin-bottom: 0.3rem;
     font-size: 0.95rem;
-    line-height: 1.4;
 }
 
 /* =========================

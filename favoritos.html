@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favoritos | WikiZelda</title>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
-    <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/script.js" defer></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Favoritos | WikiZelda</title>
 </head>
 
 <body>
@@ -20,7 +22,7 @@
         <ul class="menu">
             <li class="opcion_menu"><a href="index.html">Inicio</a></li>
             <li class="opcion_menu"><a href="favoritos.html">Favoritos</a></li>
-            <li class="opcion_menu"><a href="catalogo.html">Catálogo</a></li>
+            <li class="opcion_menu"><a href="juegos.html">Catálogo</a></li>
         </ul>
     </nav>
 </header>
@@ -34,6 +36,16 @@
     </section>
 
     <section class="favoritos">
+        <div class="controles_favoritos">
+            <label for="ordenFavoritos">Ordenar por:</label>
+
+            <select id="ordenFavoritos">
+                <option value="az">Nombre (A-Z)</option>
+                <option value="za">Nombre (Z-A)</option>
+                <option value="reciente">Más recientes</option>
+                <option value="antiguo">Más antiguos</option>
+            </select>
+        </div>
         <div class="grid_resultados" id="contenedorFavoritos">
             <!-- JS pintará aquí las tarjetas -->
         </div>

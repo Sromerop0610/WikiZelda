@@ -1,0 +1,25 @@
+[debug] [2026-04-26T17:01:21.120Z] ----------------------------------------------------------------------
+[debug] [2026-04-26T17:01:21.124Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\sarit\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2026-04-26T17:01:21.124Z] CLI Version:   15.15.0
+[debug] [2026-04-26T17:01:21.124Z] Platform:      win32
+[debug] [2026-04-26T17:01:21.124Z] Node Version:  v24.14.1
+[debug] [2026-04-26T17:01:21.124Z] Time:          Sun Apr 26 2026 19:01:21 GMT+0200 (hora de verano de Europa central)
+[debug] [2026-04-26T17:01:21.124Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\sarit\Documents\lenguaje_marcas\WikiZelda
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] 
